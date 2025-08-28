@@ -9,8 +9,8 @@
     <title>Hanabi AR</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
     
@@ -19,19 +19,18 @@
     <style>
         body { 
             margin: 0; 
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Yu Mincho', 'YuMincho', serif;
         }
         .container { width: 100vw; height: 100vh; position: relative; }
         a-scene { width: 100%; height: 100%; display: none; }
         a-scene.visible { display: block; }
 
-        /* ローダー全体のスタイル */
         #loader {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: #121212;
-            color: white;
+            background: #000000; /* ★★★ 背景を黒に変更 ★★★ */
+            color: #FFFFFF;      /* ★★★ 文字の基本色を白に変更 ★★★ */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -39,43 +38,39 @@
             text-align: center;
             z-index: 10000;
             transition: opacity 0.8s ease;
-            cursor: pointer; /* 画面全体がクリックできることを示す */
+            cursor: pointer;
         }
         #loader.hidden {
             opacity: 0;
             pointer-events: none;
         }
 
-        /* タイトル「Hanabi」のスタイル */
-        #loader h1 {
-            font-size: clamp(4rem, 20vw, 8rem); /* 画面サイズに応じて調整 */
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: 0.1em;
+        #logo {
+            width: clamp(250px, 60vw, 500px);
+            height: auto;
+            margin-bottom: 30px;
             transition: transform 0.5s ease;
         }
         
-        /* ローディング中にタイトルを少し小さくする */
-        #loader.is-loading h1 {
+        #loader.is-loading #logo {
             transform: scale(0.8);
         }
 
-        /* サブテキスト（Tap to Startなど）のスタイル */
         #loader p {
+            font-family: 'Yu Mincho', 'YuMincho', serif;
             font-weight: 300;
-            opacity: 0.7;
-            margin-top: 40px;
-            letter-spacing: 0.2em;
+            color: #FFFFFF; /* ★★★ 文字色を白に指定 ★★★ */
+            margin-top: 45px;
+            letter-spacing: 0.25em;
             font-size: 14px;
-            animation: fadeIn 2s 1s forwards; /* 1秒後にフェードイン */
-            opacity: 0; /* 最初は非表示 */
+            animation: fadeIn 2s 1s forwards;
+            opacity: 0; /* アニメーション開始前は透明 */
         }
         
         @keyframes fadeIn {
-            to { opacity: 0.7; }
+            to { opacity: 1; } /* ★★★ 完全に不透明（白）になるように変更 ★★★ */
         }
 
-        /* ローディング中のテキストのスタイル */
         #loader.is-loading p:after {
             content: ''; 
         }
@@ -84,7 +79,7 @@
 <body>
     <div class="container">
         <div id="loader">
-            <h1>Hanabi</h1>
+            <img id="logo" src="./images/hanabi-logo.png" alt="Hanabi 書道ロゴ">
             <p id="loader-message">TAP TO START</p>
         </div>
 
