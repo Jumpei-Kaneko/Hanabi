@@ -6,9 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const targetEntity = document.querySelector('[mindar-image-target]');
 
     // --- 設定項目 ---
-    // ここに、用意した30秒の花火の音源ファイルへのパスを指定してください。
-    const AUDIO_FILE_PATH = 'https://storage.googleapis.com/gemini-prod-us-west1-assets/sound/hanabi_sound_30s.mp3'; 
-    // ↑ 現在はサンプルの音源を指定しています。ご自身のファイルに差し替えてください。
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
+    // ここに、作成した40秒の花火の音源ファイルへのパスを指定してください。
+    const AUDIO_FILE_PATH = './hanabi_sound_40s.mp3'; // 例: './my_sound.mp3'
+    // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 
     // --- Web Audio APIの準備 ---
     let audioContext;
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (e) {
             console.error('音響システムの初期化に失敗しました:', e);
-            throw new Error('音源の読み込みに失敗しました。');
+            throw new Error('音源の読み込みに失敗しました。ファイルパスが正しいか確認してください。');
         }
     };
 
@@ -68,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // 既存の再生があれば停止
         stopDecayExperience();
 
-        // --- 毎回違う壊れ方にするためのランダム設定 ---
-        const decayDuration = 20 + Math.random() * 10; // 劣化にかかる時間 (20〜30秒)
+        // --- ★毎回違う壊れ方にするためのランダム設定（40秒版）★ ---
+        const decayDuration = 30 + Math.random() * 10; // 劣化にかかる時間 (30〜40秒に調整)
         const finalBitDepth = 1 + Math.random() * 2;   // 最終的なビット深度 (1〜3)
         const finalNormFreq = 0.05 + Math.random() * 0.1; // 最終的な周波数 (0.05〜0.15)
         
