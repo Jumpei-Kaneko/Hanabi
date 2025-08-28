@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 設定項目 ---
     // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
-    // ここに、作成した40秒の花火の音源ファイルへのパスを指定してください。
-    const AUDIO_FILE_PATH = './hanabi_sound_40s.mp3'; // 例: './my_sound.mp3'
+    // ファイルパスの書き方を修正しました。
+    const AUDIO_FILE_PATH = 'audio/hanabi_sound_40s.mp3'; // './' を削除
     // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 
     // --- Web Audio APIの準備 ---
